@@ -1,23 +1,18 @@
+const multipleOfX = (n, x) => {
+    return n % x === 0;
+}
+
 const multipleOf3And5 = (end) => {
-    let multiples = [];
+    let multiplesSum = 0;
 
     for(let i = 0; i < end; i++) {
-        const multipleOf3 = i % 3 === 0;
-        const multipleOf5 = i % 5 === 0;
-        if(multipleOf3 || multipleOf5) {
-            multiples.push(i);
+        if(multipleOfX(i, 3) || multipleOfX(i, 5)) {
+            multiplesSum = multiplesSum + i;
         }
     }
 
-    return multiples;
+    return multiplesSum;
 }
 
-const sumOfMultiples = (end) => {
-    const multiples = multipleOf3And5(end);
-    return multiples.reduce((sum, i) => {
-        return sum + i
-    }, 0)
-}
-
-const result = sumOfMultiples(1000);
+const result = multipleOf3And5(1000);
 console.log(result);
